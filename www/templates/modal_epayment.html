@@ -1,0 +1,44 @@
+<ion-modal-view style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important; height:20%; min-height:20%;">
+    <div class="card" style="width:80%; margin-left: auto; margin-right:auto;">
+        <div class="item item-divider" style="text-align:center;">
+            E-payment form
+        </div>
+        <div class="item item-text-wrap" style="text-align:left;">
+            <form name="Epayment">
+                <!-- <div style="display:flex">
+                    <span class="input-label credit" style="padding-left:1em; margin-top:-0.2em;">Type</span>
+                    <input type="radio" ng-model="payment.creditType" value="visa" style="height:2.5em; width:1em;;" required>
+                    <img class="stable" src="ivisa_logo.jpg" style="height:2.5em; padding-left:1em; padding-right:1em; margin-top:-0.5em;">           
+                    <input type="radio" ng-model="payment.creditType" value="mastercard" style="height:2.5em; width:1em;;">
+                    <img src="img/mastercard_logo.gif" style="height:2.5em; padding-left:1em; padding-right:1em; margin-top:-0.5em;">                    
+                </div> -->
+                <label class="item item-input">
+                    <span class="input-label credit">Balance</span>
+                    <div style="font-size:1em;">$</div><input type="text" style="font-size:1em;" ng-model="balance" ng-readonly="true">
+                </label>
+                <!-- <label class="item item-input" >
+                    <span class="input-label credit">Name on Card</span>
+                    <input type="text" ng-model="payment.cardName" style="font-size:1em;" required>
+                </label>
+                <label class="item item-input">
+                    <span class="input-label credit">Card Number</span>
+                    <input type=text pattern="[0-9]{13,16}" ng-model="payment.cardNum" style="font-size:1em;" required>
+                </label>
+                <div style="display:flex;">
+                    <label class="item item-input" style="width:50%;">
+                        <span class="input-label credit">Expiry Date</span>
+                        <input type="date" min="{{today}}" ng-model="payment.expiryDate" style="font-size:1em; height:2em; line-height:3em; margin-bottom:0.3em; padding-right:1em;" required>
+                    </label>
+                    <label class="item item-input" style="width:50%; border-top:none !important; border-bottom: 1px solid lightgrey !important;">
+                        <span class="input-label credit">CVC</span>
+                        <input type=text pattern="\d{3}" ng-model="payment.cvc" style="font-size:1em;" required>
+                    </label>
+                </div> -->
+            </form>
+        </div>
+        <div class="item item-divider" style="text-align:center;">
+            <!--            <button class="button button-stable" id="confirm-button" style="font-size:1em; color:black; box-shadow:0px 1px 5px #888888; height:5%; width:25%;" ng-click="sendPayment(payment)" ng-disabled="Epayment.$invalid">Confirm</button>-->
+                <div id="paypal-button-container"></div>       
+        </div>
+    </div>    
+</ion-modal-view>

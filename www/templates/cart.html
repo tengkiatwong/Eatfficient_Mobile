@@ -1,0 +1,57 @@
+<ion-view view-title="" hide-back-button="true">
+    <ion-content style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+        <div class="list card" style="margin:2em; margin-top:3.5em;">  
+            <div class="item item-assertive" style="display:flex;">
+                <img src="img/cart-final.svg" style="height:4em; width:15%;">
+                <div>
+                    <h2 style="font-size:2em; color:white; line-height:200%">Table {{ order.tableNumber }}</h2>                    
+                </div>
+            </div>
+            <div class="item" ng-repeat="item in orderCart track by $index" style="display:flex">      
+                <img class="dish-photo" src="{{item.img}}" style="width:30%; height:10.3em; padding:1em;">
+                <div class="cart-dish-label" style="width:50%; padding:0.5em;">
+                    <p style="white-space:normal; font-size:1em; line-height:150%;font-weight:600; color:red;"> {{item.name}} </p>
+<!--                    <img src="img/chef.svg" style="height:1em;"> -->
+                    <p ng-if="item.sideDishNames.length!=0" style="color:black">Selected Dishes:</p>
+                    <div ng-repeat="sidedish in item.sideDishNames" ng-if="item.sideDishNames.length!=0">
+                        <p style="white-space:normal; color:black; padding-left:1em;"> {{sidedish.name}}</p>   
+                    </div>
+                    <p style="padding-top:0.5em; white-space:normal; color:black; font-style: italic;" ng-show="item.comment">"{{item.comment}}"</p>                   
+                    <p style="padding-top:0.5em; color:black">Price: {{item.price | currency:'$':2}}</p>
+                    <p style="text-align:right; bottom:2em; position:absolute; right:2em;"><button class="button button-assertive" style="height:1.2em; min-height:1em; line-height:1em; padding-bottom:1.5em;" ng-click="removeItemFromCart($index)">Remove from cart<img src="img/cart-white.svg" style="height:1.2em; margin-bottom:-0.2em;"></button></p>
+                </div>
+                <div style="width:20%; padding:1em;">
+                    <p style="text-align:center; line-height:200%"> Quantity: </p>
+                    <p style="text-align:center"><button class="button button-icon ion-arrow-up-b button-large" style="min-height:1em; height:1.5em; margin-top:-1em" ng-click="upArrow(item)"></button></p>
+                    <p style="text-align:center; margin-top:-0.4em;"> {{item.quantity}}</p>
+                    <p style="text-align:center"><button class="button button-icon ion-arrow-down-b button-large" style="min-height:1em; margin-top:-1em" ng-click="downArrow(item)" ng-disabled="item.quantity==1"></button></p>
+                </div>
+            </div>
+            <div class="item item-divider item-light" style="text-align:center; font-weight:400; color:black">
+                <div style="display:flex; height:7em;">
+                    <div style="width:25%; font-size:1.2em;"> 
+                        <div style="height:33%;">Subtotal:</div>
+                        <div style="height:33%;">S/C:</div>
+<!--                        <div style="height:33%;">GST:</div>-->
+                    </div>
+                    <div style="width:25%; font-size:1.2em;"> 
+                        <div style="height:33%;">{{ getSubtotal(orderCart) | currency:'$':2 }}</div>
+                        <div style="height:33%;">{{ getServiceCharge(orderCart) | currency:'$':2 }}</div>
+<!--                        <div style="height:33%;">{{ getGst() | currency:'$':2 }}</div>-->
+                    </div>
+                    <div style="width:25%; font-size:1.2em;">                           
+                        <div style="height:33%;">Discount:</div>
+                        <div style="height:33%; font-weight:700; color:red;">Balance:</div>
+                    </div>
+                    <div style="width:25%; font-size:1.2em;">                   
+                        <div style="height:33%;">({{ getDiscount(orderCart) | currency:'$':2 }})</div>
+                        <div style="height:33%; font-weight:900; color:red;">{{ getBalance(orderCart) | currency:'$':2 }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item-divider item-assertive" style="text-align:center;">
+                <button class="button button-stable" ng-click="sendOrder()">Send Order </button>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

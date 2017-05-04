@@ -1,0 +1,60 @@
+<ion-view view-title="">
+    <ion-content style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">                     
+        <div class="list card" style="margin:2em; margin-top:3.5em;">                   
+            <div class="item item-dark" style="display:flex;">
+                <img src="img/invoice.svg" style="height:4em; width:15%;">
+                <div>
+                    <h2 style="font-size:2em; color:white;">Bill - Table {{ order.tableNumber }}</h2>
+                    <h2 style="color:white">Member: {{member.memberName? member.memberName: 'None'}}</h2>
+                </div>
+            </div>
+            <a class="item" ng-repeat="item in orders[0].dishList track by $index" style="display:flex;">      
+                <!--            <img class="dish-photo" src="{{item.img}}" style="width:30%; height:10.3em; padding:1em;">  -->
+                <div class="cart-dish-label" style="width:75%; padding-top:0.5em; padding-left:1.5em;">
+                    <p style="white-space:normal; font-size:1em; line-height:150%;font-weight:600; color:black;"> {{item.name}} </p>
+                    <div ng-if="item[item.dishId].length!=0" ng-repeat="side in item[item.dishId]">
+                        <div style="white-space:normal;">{{side.name}}</div>
+                    </div>
+                    <p style="white-space:normal; font-size:1em; font-style:italic; line-height:200%; color:black;" ng-show="item.comment"> "{{item.comment}}"</p>                   
+                    <p style="font-size:1em; line-height:200%; color:black">Price: {{item.price | currency:'$':2}}</p>                        
+                </div>
+                <div style="width:20%; padding:0.3em;">
+                    <p style="text-align:center; line-height:200%"> Quantity: </p>                        
+                    <p style="text-align:center; font-size:1.5em; line-height:100%"> {{item.quantity}}</p>                        
+                </div>
+            </a>
+            <div class="item item-divider item-light" style="text-align:center; font-weight:400; color:black">
+                <div style="display:flex; height:7em;">
+                    <div style="width:25%; font-size:1.2em;"> 
+                        <div style="height:33%;">Subtotal:</div>
+                        <div style="height:33%;">S/C:</div>
+                        <!--                        <div style="height:33%;">GST:</div>-->
+                    </div>
+                    <div style="width:25%; font-size:1.2em;"> 
+                        <div style="height:33%;">{{ getSubtotal(orders[0].dishList) | currency:'$':2 }}</div>
+                        <div style="height:33%;">{{ getServiceCharge(orders[0].dishList) | currency:'$':2 }}</div>
+                        <!--                        <div style="height:33%;">{{ getGst() | currency:'$':2 }}</div>-->
+                    </div>
+                    <div style="width:25%; font-size:1.2em;">                           
+                        <div style="height:33%;">Discount:</div>
+                        <div style="height:33%; font-weight:700; color:red;">Balance:</div>
+                    </div>
+                    <div style="width:25%; font-size:1.2em;">                   
+                        <div style="height:33%;">({{ getDiscount(orders[0].dishList) | currency:'$':2 }})</div>
+                        <div style="height:33%; font-weight:900; color:red;">{{ getBalance(orders[0].dishList) | currency:'$':2 }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="item item-divider item-dark" style="text-align:center">                           
+                <button class="button button-stable" ng-click="openPayment()" ng-disabled="!orders[0].dishList">Make E-Payment</button> 
+                <button class="button button-calm" ng-click="redeemReward()" ng-disabled="member.redeemed || !orders[0].dishList || !pointsPolicy.redeemable">Redeem Reward</button>
+                <button class="button button-calm" ng-click="enterReceiptContact()" style="white-space:normal">Get Receipt</button>
+            </div>
+<!--
+             <button class="button button-balanced" ng-click="callPaypal(amount)" style="margin-left:2em;">Try Paypal</button>
+        <input type="number" ng-model="amount" style="border: 1px solid black"> balance is {{$rootScope.balance}}
+    -->
+</div>
+
+</ion-content>  
+</ion-view>

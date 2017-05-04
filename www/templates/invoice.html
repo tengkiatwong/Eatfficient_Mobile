@@ -1,0 +1,130 @@
+<ion-view view-title="">
+    <ion-content>
+        <!--
+<!doctype html>
+<html>
+-->
+        <!--<body>-->
+        <div class="invoice-box">
+            <table cellpadding="0" cellspacing="0">
+                <tr class="top">
+                    <td colspan="2">
+                        <table>
+                            <tr style=" display:flex; justify-content:space-between; width:32em;">
+                                <td class="title">
+                                    <img src="img/eatfficient%20logo.png" style="width:100%; max-width:300px;">
+                                </td>
+
+                                <td>
+                                    <b>E-receipt #{{paymentId}}</b><br>
+                                    Created: {{month}} {{date}}, {{year}}<br>                              
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="information">
+                    <td colspan="2">
+                        <table>
+                            <tr style=" display:flex; justify-content:space-between; width:32em;">
+                                <td>
+                                    MOF My Izakaya<br>
+                                    AMK Hub #B1-51<br>
+                                    Singapore 569933
+                                </td>
+
+                                <td>
+                                    <div ng-if="!member.memberName">Guest</div><div ng-if="member.memberName">Member</div><br>
+                                    <div ng-if="member.memberName">{{member.memberName}}</div><br>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+
+                <tr class="heading" style="background-color:#eeeeee; border-bottom:1px solid lightgrey; display:flex; justify-content:space-between; width:32em;">
+                    <td>
+                        Payment Method
+                    </td>
+
+                    <td>
+                        <!--                    Check #-->
+                    </td>
+                </tr>
+
+                <tr class="details" style=" border-bottom:1px solid lightgrey; display:flex; justify-content:space-between; width:32em;">
+                    <td>
+                        E-Payment
+                    </td>
+
+                    <td>
+                        <!--                    1000-->
+                    </td>
+                </tr>
+
+                <tr class="heading" style="background-color:#eeeeee; border-bottom:1px solid lightgrey; display:flex; justify-content:space-between; width:32em;">
+                    <td>
+                        Item
+                    </td>
+
+                    <td>
+                        Price
+                    </td>
+                </tr>
+
+                <tr class="item"  ng-repeat="item in orders[0].dishList track by $index" style="display:flex; justify-content:space-between; width:32em !important; padding:0; border-top:none; border-left:none; border-right:none;">
+
+                    <td>
+                        {{item.name}}
+                        <div ng-if="item[item.dishId].length!=0" ng-repeat="side in item[item.dishId]">
+                            <div style="white-space:normal; padding-left:0.5em;">{{side.name}}</div>
+                        </div>
+                    </td>
+
+                    <td>
+                        {{item.price*item.quantity |  currency:'$':2 }}
+                    </td>
+                </tr>
+
+
+                <!--
+<tr class="item last">
+<td>
+Domain name (1 year)
+</td>
+
+<td>
+$10.00
+</td>
+</tr>
+
+-->
+                <tr class="total" style=" display:flex; justify-content:space-between; width:32em;">
+                    <td></td>
+
+                    <td>
+                        <div>
+                            Subtotal: {{getSubtotal(orders[0].dishList) | currency:'$':2}}
+                        </div>
+                        <div>
+                            Discount: ({{getDiscount(orders[0].dishList) | currency:'$':2}})
+                        </div>
+                        <div>
+                            S/C: {{getServiceCharge(orders[0].dishList) | currency:'$':2}}
+                        </div>
+                        <div>
+                            Balance: {{getBalance(orders[0].dishList) |  currency:'$':2 }}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+        <!--</body>-->
+        <!--</html>-->
+
+        <div style="margin-top: 2em; margin-left:3em; font-size:1.3em; color:red; text-decoration:underline">Please present this to our staff for exit</div>
+
+    </ion-content>
+</ion-view>

@@ -1,0 +1,23 @@
+<ion-modal-view class="promo-modal" style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+    <ion-content>
+        <div class="card" style="width:80%; margin-left: auto; margin-right:auto;">
+            <div class="item item-divider " style="text-align:center; height:4em;">
+  <!--
+                <button class="button button-icon icon-right button-clear button-assertive ion-close-circled" style="right:0.5em; font-size:2em; position:absolute;" ng-click="cancelPayment()"></button>
+-->
+                <div style="line-height:300%">Have a promo code? Enter it below!</div>
+                
+            </div>            
+            <div class="item item-text-wrap" style="text-align:center;">
+                <input type="text" style="border:1px solid lightgrey; width:100%; text-align:center;" ng-model="code.value" placeholder="Promo Code">
+            </div>
+            <div class="item item-divider" style="text-align:center;" ng-click="submitPromoCode(code.value)">
+                Submit
+            </div> 
+            <div style="height:1em; min-height:1em;"></div>
+            <div class="item item-divider item-dark" style="text-align:center;" ng-click="noPromoCode()">
+                Proceed without Promo Code
+            </div> 
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,15 @@
+<ion-view view-title="">
+    <ion-content style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+        <div class="list promotion-list">
+            <div class="promotion-dish" href="#" ng-repeat="item in appetizers" >                
+                <img class="dish-photo" src="{{item.img}}" ng-click="addItem(item)">
+                <div class="dish-label">
+                    <p style="white-space:normal; font-weight:700"> {{item.name}}  </p>
+                    <p> 
+                        {{item.price | currency:'$':2}} 
+                    </p>
+                </div>
+            </div>
+        </div>
+    </ion-content>
+</ion-view>

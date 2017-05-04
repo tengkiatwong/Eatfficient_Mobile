@@ -1,0 +1,39 @@
+<ion-modal-view class="redeemReward-modal" style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+    <ion-header-bar class="bar-light" style="background-color:transparent !important">
+        <h1 class="title">Redeem Membership Points</h1>
+    </ion-header-bar>
+    <ion-content>
+        <div class="list">
+            <label class="item item-input">
+                <span class="input-label">Available Member Points </span>
+                <div ng-if="member.memberName">{{member.points}} points</div>
+                <div ng-if="!member.memberName">Member not Logged in </div>
+            </label>
+            <label class="item item-input">
+                <span class="input-label">Available Reward</span>
+                <div ng-if="pointsPolicy.redeemable">{{pointsPolicy.numberOfPoints}} membership points for {{pointsPolicy.discount | currency:'$':2}} off </div>
+                <div ng-if="!pointsPolicy.redeemable">No rewards available</div>
+            </label>
+<!--
+            <div style="display:flex; justify-content;flex-start;">               
+                <span class="input-label" style="width:30%; padding-left:1em; line-height:280%">Redeem Quantity</span>    
+                <input type="number" min="1" ng-model="quantity" style="border:none;width:20%;padding-left:1em; margin-right: 0em; margin-top:1em;" required>   
+                <div class="quantity-selector">               
+                    <button class="button button-clear" style="min-height:2em; margin-top:1em;" ng-click="quantity=3">
+                        <i class="icon ion-arrow-up-b dark"></i>
+                    </button>
+                    <button class="button button-clear" style="min-height:2em; margin-top:-0.5em" ng-click="downArrow(choice)">
+                        <i class="icon ion-arrow-down-b dark"></i>
+                    </button>           
+                </div>
+                <div style="line-height:360%; font-size:1.2em;"> (Amount deducted)</div>
+            </div> 
+-->
+        </div>
+        <div class="padding">
+            <button class="button button-block button-positive" ng-click="redeemMemberPoints()" ng-disabled="member.redeemed || !member.memberName || !pointsPolicy.redeemable">
+                Redeem
+            </button>            
+        </div>
+    </ion-content>
+</ion-modal-view>

@@ -1,0 +1,21 @@
+<ion-view view-title="">
+    <ion-content scroll="false" style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+        <div class="card" style="width:80%; margin-left: auto; margin-right:auto; margin-top:3.5em;">
+            <div class="item item-divider item-assertive" style="text-align:center;">
+                Please enter promo code below
+            </div>
+            <div class="item item-text-wrap" style="text-align:center;">
+                <input type="text" ng-model="code.value" style="border:1px solid lightgrey; width:100%; text-align:center;" placeholder="Promo Code">
+            </div>
+            <div class="item item-divider item-assertive" style="text-align:center;" ng-click="submitPromoCode()">
+                Submit
+            </div>
+        </div>
+<!--
+        <button class="button button-balanced" ng-click="getAuthToken()" style="margin-left:4em;">Get Access Token</button>
+       
+        <button class="button button-balanced" ng-click="checkPayment()" style="margin-left:2em;">Check Payment</button>     
+         
+-->
+    </ion-content>    
+</ion-view>

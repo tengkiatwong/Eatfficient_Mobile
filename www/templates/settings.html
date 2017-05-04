@@ -1,0 +1,35 @@
+<ion-view view-title="">
+    <ion-content scroll="false" style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+
+        <div class="card" style="width:80%; margin-left: auto; margin-right:auto; margin-top:3.5em;" ng-if="!settings">
+            <div class="item item-divider item-dark" style="text-align:center;">
+                Please enter staff details below
+            </div>
+            <div class="item item-text-wrap" style="text-align:center;">
+                <input type="number" style="border:1px solid lightgrey; width:100%; text-align:center;" ng-model="staffId" placeholder="Staff Id">
+                <input type="password" style="border:1px solid lightgrey; width:100%; text-align:center;" ng-model="password" placeholder="Password">
+            </div>
+            <div class="item item-divider item-dark" ng-click="staffLogin(staffId, password)" style="text-align:center;">
+                Enter
+            </div>
+        </div>       
+        <div class="card" style="width:100%; margin-left: auto; margin-right:auto; margin-top:3.5em;" ng-if="settings">
+            <div class="item item-divider item-light item-icon-right" ng-click="clickTable()">
+                <label style="font-size:1.2em;" for="tableNum">Table: {{$parent.$parent.order.tableNumber}} </label>
+                <i class="icon ion-ios-arrow-down"></i>
+            </div>
+            <div class="item item-divider item-dark" ng-click="clickTable()" ng-if="tableClicked" >
+                <label style="font-size:1em;" for="tableNum">Choose Table:</label>                
+            </div>
+            <div style="display:flex; flex-wrap:wrap;" ng-if="tableClicked">
+                <ion-item class="item item-text-wrap item-icon-left" style="border:none; margin:1em; width:5%" ng-repeat="table in tables" ng-click="updateTable(table)">             
+                    <!--<i class="icon ion-android-desktop" style="font-size:3em;"></i>-->
+                    <i class="icon">
+                        <img src="img/table.png" style="width:1.3em;">
+                    </i>
+                    <div style="white-space:nowrap;">{{ table.tableNumber }}</div>            
+                </ion-item>
+            </div>            
+        </div>           
+    </ion-content>
+</ion-view>

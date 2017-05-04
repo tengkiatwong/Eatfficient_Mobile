@@ -1,0 +1,55 @@
+<ion-modal-view class="add-item-modal">
+    <ion-content style="background-image: url('img/softwhitebackground.jpg') !important; background-size:cover !important;">
+        <div class="list card">
+            <div class="item" style="text-align:center;">            
+                <p style="font-weight:900; font-size:1.5em; line-height:200%;color:grey">{{selectedItem.name}}</p>            
+            </div>
+
+            <div class="item item-body">
+                <img class="full-image" style="height:25em;" src="{{selectedItem.img}}">
+                <div style="margin-bottom:2em;">
+                    {{selectedItem.description}}
+                </div>
+                <form name="orderForm">  
+                    <!--               
+<span class="input-label" style="display:inline; padding-right:0.38em;" ng-show="selectedItem.hasComment">Comment</span>   
+<select type="text" ng-model="choice.comment" style="border:1px solid black;display:inline;width:30%;height:2.4em;padding-left:1em" ng-if="choice.hasComment" required="false" meal>
+<option style="font-size: 0.9em;" ng-repeat="x in comments" value="{{ x.comment }}">{{ x.comment }}</option>
+</select>
+-->
+                    <div style="display:flex">
+                        <span class="input-label" style="width:20%; height:100%;">Quantity</span>
+                        <input type="number" min="1" ng-model="selectedItem.quantity" style="width:26%; text-align:center; border-bottom:0.5px solid black" required>   
+                        <span class="input-label" style="display:flex; flex-direction:column; padding:0;"  >           
+                            <button class="button icon ion-arrow-up-b button-small button-clear button-dark" style="min-height:1.5em; width:1em;" ng-click="upArrow(selectedItem)">                                
+                            </button>
+                            <button class="button icon ion-arrow-down-b button-small button-clear button-dark" style="min-height:1.5em;margin-top:-1em;width:1em;" ng-click="downArrow(selectedItem)">                            
+                            </button>           
+                        </span>
+                    </div>
+                    <div ng-repeat = 'category in selectedItem.selectionList' style="padding-bottom:1em;">
+                        <span class="input-label" style="display:inline; width:10em !important; font-weight:700">Select {{category.selectNumber}} from {{category.category}} </span>   
+                        <div ng-repeat="i in getNumber(category.selectNumber) track by $index" style="display:flex">
+                            <div style="width:30%; line-height:200%;">
+                                {{category.category}} {{$index+1}}:
+                            </div>
+                            <div style="width:40%;">
+                                <select type="text" ng-model="selectedItem.selectionList[$parent.$index].selectedDish[$index].name" style="border:none; border-bottom: 1px solid black; display:inline; width:100%;height:2.4em;padding-left:1em" required>
+                                    <option style="font-size: 0.9em;" ng-repeat="dish in category.selectDishList">{{ dish.name }}</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="input-label" style="display:inline; width:50%">Additional Comment</span>   
+                    <select type="text" ng-model="selectedItem.comment" style="border:none; border-bottom: 1px solid black; display:inline;width:26%;height:2.4em;padding-left:1em">
+                        <option style="font-size: 0.9em;" ng-repeat="x in comments" value="{{ x.comment }}">{{ x.comment }}</option>
+                    </select>
+                    <input type="text" ng-model="selectedItem.otherComment" ng-if="selectedItem.comment=='Other:'" style="border-bottom:1px solid black;display:inline;width:40%;padding-left:1em; margin-bottom:0.3em;" placeholder="Write your comment">
+                </form> 
+            </div>
+            <div class="item item-divider item-light" style="text-align:center">
+                <button class="button button-energized" ng-click="addToCart(selectedItem)" ng-disabled="orderForm.$invalid;">Add to Cart<img src="img/cart-white.svg" style="width:1.5em; margin-bottom:-0.3em;"></button>
+            </div>
+        </div>
+    </ion-content>
+</ion-modal-view>
